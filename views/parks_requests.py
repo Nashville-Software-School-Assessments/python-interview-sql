@@ -1,39 +1,25 @@
-import json
 import sqlite3
 
+def dict_fetch_all(cursor):
+    """Return all rows from a cursor as a list of dictionaries"""
+    columns = [col[0] for col in cursor.description]
+    return [
+        dict(zip(columns, row))
+        for row in cursor.fetchall()
+    ]
 
 def get_all_parks():
     with sqlite3.connect('./db.sqlite3') as conn:
-        conn.row_factory = sqlite3.Row
         db_cursor = conn.cursor()
 
         # TODO: Write a sql query to get all the parks 
         #       with each parks state name and type label information
         db_cursor.execute("""
-        
+            
         """)
 
-        parks = []
-
-        dataset = db_cursor.fetchall()
-
-        for row in dataset:
-            park = {
-                'id': row['id'],
-                'name': row['name'],
-                'description': row['description'],
-                'type': {
-                    'label': row['label']
-                },
-                'state': {
-                    'name': row['state_name']
-                }
-            }
-
-            parks.append(park)
-            
-
-    return json.dumps(parks)
+        dataset = dict_fetch_all(db_cursor)
+    return dataset
 
 
 def get_parks_by_type(type_id):
@@ -45,22 +31,9 @@ def get_parks_by_type(type_id):
         db_cursor.execute("""
         
         """)
-
-        parks = []
-
-        dataset = db_cursor.fetchall()
-
-        for row in dataset:
-            park = {
-                'id': row['id'],
-                'name': row['name'],
-                'description': row['description'],
-            }
-
-            parks.append(park)
-            
-
-    return json.dumps(parks)
+        
+        dataset = dict_fetch_all(db_cursor)
+    return dataset
 
 def get_parks_ordered_by_name():
     with sqlite3.connect('./db.sqlite3') as conn:
@@ -68,23 +41,11 @@ def get_parks_ordered_by_name():
         db_cursor = conn.cursor()
 
         # TODO: Write a sql query to get all the parks 
+
         #       in alphabetical order by the park name
         db_cursor.execute("""
-        
+            
         """)
 
-        parks = []
-
-        dataset = db_cursor.fetchall()
-
-        for row in dataset:
-            park = {
-                'id': row['id'],
-                'name': row['name'],
-                'description': row['description'],
-            }
-
-            parks.append(park)
-            
-
-    return json.dumps(parks)
+        dataset = dict_fetch_all(db_cursor)
+    return dataset

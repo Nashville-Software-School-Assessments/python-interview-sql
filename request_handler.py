@@ -1,5 +1,5 @@
+import json
 from flask import Flask, request
-
 from views.parks_requests import (
     get_all_parks, get_parks_by_type, get_parks_ordered_by_name)
 
@@ -12,10 +12,15 @@ def list_parks():
     search = request.args.get('type', None)
     order_by = request.args.get('order_by', None)
     if search:
-        response = get_parks_by_type(search)
+        data = get_parks_by_type(search)
     elif order_by:
-        response = get_parks_ordered_by_name()
+        data = get_parks_ordered_by_name()
     else:
-        response = get_all_parks()
-
+        data = get_all_parks()
+    
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        content_type='application/json'
+    )
     return response
