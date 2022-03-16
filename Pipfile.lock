@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6e331337a7fe1e92d696e751f02c006d0cf24b7c10f4b6818fe54717296cf37e"
+            "sha256": "745520e5d915d8556237854e64e026073ddd56f9ac0d70bb9e560f9889b1ccb1"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,6 +32,14 @@
             "markers": "python_version >= '3.6'",
             "version": "==8.0.4"
         },
+        "ddt": {
+            "hashes": [
+                "sha256:439f163a149d47761bcb11fefdd7327c7bc9262fa1c53f5929f643a6faa6d454",
+                "sha256:8de39a69730442dc835e4d33f9d2e33043ff91151c8d18086959ee556febb9f8"
+            ],
+            "index": "pypi",
+            "version": "==1.4.4"
+        },
         "flask": {
             "hashes": [
                 "sha256:59da8a3170004800a2837844bfa84d49b022550616070f7cb1a659682b2e7c9f",
@@ -49,11 +57,11 @@
         },
         "itsdangerous": {
             "hashes": [
-                "sha256:29285842166554469a56d427addc0843914172343784cb909695fdbe90a3e129",
-                "sha256:d848fcb8bc7d507c4546b448574e8a44fc4ea2ba84ebf8d783290d53e81992f5"
+                "sha256:7b7d3023cd35d9cb0c1fd91392f8c95c6fa02c59bf8ad64b8849be3401b95afb",
+                "sha256:935642cd4b987cdbee7210080004033af76306757ff8b4c0a506a4b6e06f02cf"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==2.1.0"
+            "version": "==2.1.1"
         },
         "jinja2": {
             "hashes": [
@@ -143,11 +151,11 @@
         },
         "pytest": {
             "hashes": [
-                "sha256:9ce3ff477af913ecf6321fe337b93a2c0dcf2a0a1439c43f5452112c1e4280db",
-                "sha256:e30905a0c131d3d94b89624a1cc5afec3e0ba2fbdb151867d8e0ebd49850f171"
+                "sha256:b555252a95bbb2a37a97b5ac2eb050c436f7989993565f5e0c9128fcaacadd0e",
+                "sha256:f1089d218cfcc63a212c42896f1b7fbf096874d045e1988186861a1a87d27b47"
             ],
             "index": "pypi",
-            "version": "==7.0.1"
+            "version": "==7.1.0"
         },
         "tomli": {
             "hashes": [
