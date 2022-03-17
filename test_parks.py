@@ -1,7 +1,8 @@
 import unittest
 from request_handler import app
 from ddt import ddt, data
-from parks import PARK_TYPES, PARKS, STATES
+from tests.parks import PARK_TYPES, PARKS, STATES
+from tests.seed_db import seed_db
 
 
 class FilterData(list):
@@ -17,6 +18,9 @@ def annotated_filter(park_type_id, num_of_parks):
 
 @ddt
 class ParkTests(unittest.TestCase):
+    def setUp(self):
+        seed_db()
+        return super().setUp()
 
     def test_join(self):
         tester = app.test_client(self)
