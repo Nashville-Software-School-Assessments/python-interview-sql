@@ -1,5 +1,5 @@
 import unittest
-from request_handler import app
+from app import app
 from ddt import ddt, data
 from tests.parks import PARK_TYPES, PARKS, STATES
 from tests.seed_db import seed_db
