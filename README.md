@@ -15,6 +15,7 @@ After cloning the repo:
 3. `touch db.sqlite3`
 4. Connect to the database file and run all the sql commands inside the `seed_db.sql` file. This will create the tables and insert the data
 ## Requirements
+### The **only** code that will be added is the sql statement in each method. No other changes will need to be made
 1. The `get_all_parks` sql is assessing your knowledge of `joins`. It should return all the parks along with the state name and park type label.
 2. The `get_parks_by_type` sql is assessing your knowledge of filtering. It should return the parks associated with a specific park type
 3. The `get_parks_ordered_by_name` sql is assessing your sorting knowledge. It should return the parks sorted alphabetically by their moniker
@@ -27,7 +28,8 @@ After cloning the repo:
     
     1. Testing **`get_all_parks`**: `http://localhost:5000/parks`
     2. Testing **`get_parks_by_type`**: `http://localhost:5000/parks?type=1`
-    3. Testing **`get_parks_ordered_by_name`**: `http://localhost:5000/parks?order_by=name`
+        * Make sure it works with all park types 1-4
+    4. Testing **`get_parks_ordered_by_name`**: `http://localhost:5000/parks?order_by=name`
 
 ### Running the UnitTest file
 To see the test output before pushing to github: `python3 test_parks.py`
