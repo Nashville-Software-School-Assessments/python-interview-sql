@@ -59,7 +59,7 @@ def create_park(park):
 
 def delete_park(id):
     """Delete a park from the database"""
-    with sqlite3.connect("./kennel.sqlite3") as conn:
+    with sqlite3.connect("./db.sqlite3") as conn:
         db_cursor = conn.cursor()
 
         # TODO: Write the sql to remove a park from the database
