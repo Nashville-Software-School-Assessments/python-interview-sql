@@ -32,6 +32,12 @@ class ParkTests(unittest.TestCase):
 
         json_response = response.json
 
+        expected_sorted = sorted(
+            response.json, key=lambda park: park['name'])
+
+        self.assertListEqual(response.json, expected_sorted,
+                             "HINT: The result was not ordered as expected")
+
         for actual in json_response:
             expected_park = next(
                 (park for park in PARKS if park['park_id'] == actual['park_id']), {})
@@ -39,8 +45,8 @@ class ParkTests(unittest.TestCase):
                 (state for state in STATES if state['state_id'] == expected_park['state_id']), {})
             expected_park_type = next(
                 (pt for pt in PARK_TYPES if pt['park_type_id'] == expected_park['park_type_id']), {})
-            self.assertEqual(actual['name'], expected_state['name'],
-                             'HINT: The expected state name was not returned, check your State join')
+            self.assertEqual(actual['abbr'], expected_state['abbr'],
+                             'HINT: The expected state abbr was not returned, check your State join')
             self.assertEqual(actual['label'], expected_park_type['label'],
                              'HINT: The expected park type label was not returned, check your ParkType join')
 
@@ -55,18 +61,46 @@ class ParkTests(unittest.TestCase):
         self.assertEqual(len(response.json), num_of_parks,
                          "HINT: The response did not return the expected number of parks")
 
-    def test_order_by(self):
+    def test_create(self):
         tester = app.test_client(self)
-        response = tester.get('/parks?order_by=name',
-                              content_type='application/json')
-        expected_sorted = sorted(
-            response.json, key=lambda park: park['moniker'])
-        self.assertEqual(response.status_code, 200,
+
+        new_park = {
+            'name': 'Joshua Tree',
+            'state_id': 3,
+            'park_type_id': 1,
+            'description': 'Joshua Tree description'
+        }
+
+        response = tester.post('/parks', json=new_park,
+                               content_type='application/json')
+
+        self.assertEqual(response.status_code, 201,
                          "HINT: Check your sql for errors")
-        self.assertEqual(len(response.json), 11,
-                         "HINT: The response did not return the expected number of parks")
-        self.assertListEqual(response.json, expected_sorted,
-                             "HINT: The result was not ordered as expected")
+        actual = response.json
+        self.assertTrue(actual['id'],
+                        "Hint: the id should be a number greater than 0")
+
+        updated_get_response = tester.get(
+            '/parks', content_type='application/json')
+
+        self.assertEqual(
+            len(updated_get_response.json), 12,
+            "HINT: The ammount of parks in the database did not go up. Make sure the sql is working as expected"
+        )
+
+    def test_delete(self):
+        tester = app.test_client(self)
+        response = tester.delete('/parks/1', content_type='application/json')
+        self.assertEqual(response.status_code, 204,
+                         "HINT: Check your sql for errors")
+
+        updated_get_response = tester.get(
+            '/parks', content_type='application/json')
+
+        self.assertEqual(
+            len(updated_get_response.json), 10,
+            "HINT: The ammount of parks in the database did not go down. Make sure the sql is working as expected"
+        )
 
 
 if __name__ == '__main__':

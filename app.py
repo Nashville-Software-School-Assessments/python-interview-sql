@@ -1,7 +1,7 @@
 import json
 from flask import Flask, request
 from views.parks_requests import (
-    get_all_parks, get_parks_by_type, get_parks_ordered_by_name)
+    create_park, delete_park, get_all_parks, get_parks_by_type, get_parks_ordered_by_name)
 
 app = Flask(__name__)
 
@@ -17,10 +17,32 @@ def list_parks():
         data = get_parks_ordered_by_name()
     else:
         data = get_all_parks()
-    
+
     response = app.response_class(
         response=json.dumps(data),
         status=200,
         content_type='application/json'
+    )
+    return response
+
+
+@app.route('/parks', methods=['POST'])
+def post_park():
+    data = create_park(request.json)
+
+    response = app.response_class(
+        response=json.dumps(data),
+        status=201,
+        content_type='application/json'
+    )
+    return response
+
+
+@app.route('/parks/<id>', methods=['DELETE'])
+def remove_park(id):
+    delete_park(id)
+
+    response = app.response_class(
+        status=204,
     )
     return response

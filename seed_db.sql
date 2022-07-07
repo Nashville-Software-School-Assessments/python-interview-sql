@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS Park;
 
 CREATE TABLE `State`(
     `state_id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    `name` INTEGER NOT NULL
+    `abbr` INTEGER NOT NULL
 );
 
 CREATE TABLE `ParkType`(
@@ -15,7 +15,7 @@ CREATE TABLE `ParkType`(
 
 CREATE TABLE `Park`(
     `park_id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    `moniker` CHAR(255) NOT NULL,
+    `name` CHAR(255) NOT NULL,
     `park_type_id` INTEGER NOT NULL,
     `description` CHAR(255) NOT NULL,
     `state_id` INTEGER NOT NULL,
@@ -28,10 +28,10 @@ INSERT INTO ParkType values (2, "National Historic Site");
 INSERT INTO ParkType values (3, "Parkway");
 INSERT INTO ParkType values (4, "National Scenic Trail");
 
-INSERT INTO State values (1, "North Carolina");
-INSERT INTO State values (2, "Illinois");
-INSERT INTO State values (3, "California");
-INSERT INTO State values (4, "Montana");
+INSERT INTO State values (1, "NC");
+INSERT INTO State values (2, "IL");
+INSERT INTO State values (3, "CA");
+INSERT INTO State values (4, "MT");
 
 
 INSERT INTO Park values (1, "Appalachian", 4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 1);
