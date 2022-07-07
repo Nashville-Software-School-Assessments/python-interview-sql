@@ -88,7 +88,7 @@ class ParkTests(unittest.TestCase):
 
         self.assertEqual(
             len(updated_get_response.json), 12,
-            format_message("HINT: The ammount of parks in the database did not go up. Make sure the sql is working as expected")
+            format_message("HINT: The amount of parks in the database did not go up. Make sure the sql is working as expected")
         )
 
     @check_for_assertion_error
@@ -103,7 +103,7 @@ class ParkTests(unittest.TestCase):
 
         self.assertEqual(
             len(updated_get_response.json), 10,
-            format_message("HINT: The ammount of parks in the database did not go down. Make sure the sql is working as expected")
+            format_message("HINT: The amount of parks in the database did not go down. Make sure the sql is working as expected")
         )
 
 

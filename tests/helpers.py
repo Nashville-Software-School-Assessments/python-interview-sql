@@ -3,7 +3,7 @@ from colorama import Back, Fore, Style
 
 
 def check_for_assertion_error(func):
-    """Adds a decorator to check to see if the code has been completed instead of returning unhelpful expection"""
+    """Adds a decorator to check to see if the code has been completed instead of returning unhelpful exception"""
     def wrapper_check_for_assertion_error(*args, **kwargs):
         self = args[0]
         try:
