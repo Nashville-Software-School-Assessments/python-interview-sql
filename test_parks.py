@@ -80,7 +80,7 @@ class ParkTests(unittest.TestCase):
 
         self.assertEqual(response.status_code, 201)
         actual = response.json
-        self.assertTrue(actual['id'],
+        self.assertTrue(actual['park_id'],
                         format_message("Hint: the id should be a number greater than 0"))
 
         updated_get_response = tester.get(

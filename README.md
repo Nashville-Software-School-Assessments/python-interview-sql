@@ -25,7 +25,7 @@ After cloning the repo:
 ## Testing Locally
 
 ### Testing with Postman
-1. Running the server: `flask run`
+1. Running the server: Use the debug panel to run the server. The `launch.json` file is already set up so press play to start the debugger.
 2. In Postman the url's to use are
     
     1. Testing **`get_all_parks`**: `http://localhost:5000/parks`
@@ -33,6 +33,7 @@ After cloning the repo:
         * Make sure it works with all park types 1-4
     3. Testing **`create_park`**: 
        * url: `http://localhost:5000/parks`
+       * method: `POST`
        * body: 
             ```py
             {

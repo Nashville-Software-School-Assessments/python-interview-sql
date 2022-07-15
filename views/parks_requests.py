@@ -52,8 +52,8 @@ def create_park(park):
             
         """)
 
-        id = db_cursor.lastrowid
-        park['id'] = id
+        park_id = db_cursor.lastrowid
+        park['park_id'] = park_id
     return park
 
 
