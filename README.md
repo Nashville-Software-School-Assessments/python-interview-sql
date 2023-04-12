@@ -28,11 +28,11 @@ After cloning the repo:
 1. Running the server: Use the debug panel to run the server. The `launch.json` file is already set up so press play to start the debugger.
 2. In Postman the url's to use are
     
-    1. Testing **`get_all_parks`**: `http://localhost:5000/parks`
-    2. Testing **`get_parks_by_type`**: `http://localhost:5000/parks?type=1`
+    1. Testing **`get_all_parks`**: `http://localhost:8000/parks`
+    2. Testing **`get_parks_by_type`**: `http://localhost:8000/parks?type=1`
         * Make sure it works with all park types 1-4
     3. Testing **`create_park`**: 
-       * url: `http://localhost:5000/parks`
+       * url: `http://localhost:8000/parks`
        * method: `POST`
        * body: 
             ```py
@@ -43,7 +43,7 @@ After cloning the repo:
                 'description': 'Joshua Tree description'
             }
             ```
-    4. Testing **`delete_park`**: `http://localhost:5000/parks/1`
+    4. Testing **`delete_park`**: `http://localhost:8000/parks/1`
         * Make sure it works with other park ids
 
 ### Running the UnitTest file
