@@ -68,6 +68,10 @@ class ParkTests(unittest.TestCase):
         """create_park"""
         tester = app.test_client(self)
 
+        og_get_response = tester.get('/parks', content_type='application/json')
+
+        og_get_response_length = len(og_get_response.json)
+
         new_park = {
             'name': 'Joshua Tree',
             'state_id': 3,
@@ -87,7 +91,7 @@ class ParkTests(unittest.TestCase):
             '/parks', content_type='application/json')
 
         self.assertEqual(
-            len(updated_get_response.json), 12,
+            len(updated_get_response.json), og_get_response_length + 1,
             format_message("HINT: The amount of parks in the database did not go up. Make sure the sql is working as expected")
         )
 
